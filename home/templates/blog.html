@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+
+{% block title %} Blogs {% endblock %}
+{% block homeactive %} active {% endblock homeactive %}
+
+{% block css %}
+
+{% endblock %}
+{% block body %}
+<div class="container mt-5 mb-3">
+
+    <div class="row">
+        {% for post in posts %}
+        <div class="blog-slider">
+      <div class="blog-slider__wrp swiper-wrapper">
+        <div class="blog-slider__item swiper-slide">
+          <div class="blog-slider__img">
+            {% if post.image %}
+                <img src="{{ post.image.url }}">
+            {% endif %}
+          </div>
+          <div class="blog-slider__content">
+            <div class="blog-slider__title">{{ post.title }} <br><small>by {{ post.author }}</small></div>
+            <div class="blog-slider__text">{{post.content| truncatechars:210}}</div>
+            <a href="blog/{{post.slug}}" class="blog-slider__button">Read More {% if user.is_superuser %}<a href="delete_blog_post/{{post.slug}}/" class="blog-slider__button mx-4">Delete Blog</a>{% endif %}</a>
+            <span  style="color: white">{{post.dateTime}} </span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="pagination">
+        {% if page_obj.has_previous %}
+            <a class="btn btn-outline-primary mt-3" href="?page={{ page_obj.previous_page_number }}">Prev</a>
+        {% endif %}
+
+        {% for page in page_obj.paginator.page_range %}
+            {% if page == page_obj.number %}
+                <a class="btn btn-outline-primary mt-3 active" href="?page={{ page }}">{{ page }}</a>
+            {% else %}
+                <a class="btn btn-outline-primary mt-3" href="?page={{ page }}">{{ page }}</a>
+            {% endif %}
+        {% endfor %}
+
+        {% if page_obj.has_next %}
+            <a class="btn btn-outline-primary mt-3" href="?page={{ page_obj.next_page_number }}">Next</a>
+        {% endif %}
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+    <script type="module">
+      import Swiper from "https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.mjs";
+
+      let swiper = new Swiper(".blog-slider", {
+        spaceBetween: 30,
+        effect: "fade",
+        loop: true,
+        mousewheel: {
+          invert: false,
+        },
+      });
+    </script>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
+{% block js %} 
+<script></script>
+{% endblock %}
