@@ -3,7 +3,6 @@
 ## Kirish
 > Bu Django-ga asoslangan blog ilovasi bo'lib, foydalanuvchilarga blog postlarini yaratish, o'qish, yangilash va o'chirish imkonini beradi. U blog mazmunini boshqarish uchun qulay interfeysni taqdim etadi va foydalanuvchi autentifikatsiyasi, sharhlar tizimi va qidiruv funksiyalari kabi muhim xususiyatlarni qo‘llab-quvvatlaydi. Ushbu readme fayli sizga ilovani sozlash va undan foydalanish bo'yicha yo'l-yo'riq ko'rsatadi.
 
-![blog application](https://github.com/abubakirovxolmirza/Django-Blog/blob/main/home/media/profile_pics/glavniy.png)
 
 ## Talablar
 > Ushbu Django blog ilovasini ishga tushirish uchun kompyuteringizda quyidagi dastur oʻrnatilgan boʻlishi kerak:
